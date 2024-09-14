@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hello {
+    @apply text-center text-white bg-black;
+}
+
+.page_header{
+    @apply width-100% 
+}
