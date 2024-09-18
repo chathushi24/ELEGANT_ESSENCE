@@ -746,8 +746,27 @@ footer .copyright{
     padding-bottom: 15px;
 }
 
+/* register page */
 
+.container{
+    max-width: 600px;
+    margin: auto;
+    padding: 50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 
+body{
+    padding: 50px;
+}
+
+.form-group{
+    margin-bottom:30px ;
+}
+
+/* .form-btn {
+    background-color: green;
+    color: white;
+} */
 
 
 
