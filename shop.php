@@ -295,7 +295,7 @@
         </div>
     </section>
 
-    <section id="pagination" class="section-p1">
+    <section id="pagination" >
         <a href="shop.php">1</a>
         <a href="#">2</a>
         <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
@@ -312,7 +312,7 @@
         </div>
     </section>
 
-    <footer class="section-p1">
+    <footer id="footer" class="section-p1">
         <div class="col">
             <img class="logo" src="/images/logo1.jpeg" alt="logo">
             <h4>Contact</h4>

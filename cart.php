@@ -100,7 +100,7 @@
        </div>
     </section>
 
-    <footer class="section-p1">
+    <footer id="footer" class="section-p1">
         <div class="col">
             <img class="logo" src="/images/logo1.jpeg" alt="logo">
             <h4>Contact</h4>

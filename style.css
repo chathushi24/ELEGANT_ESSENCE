@@ -309,6 +309,7 @@ body{
 
 #newsletter{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
@@ -361,9 +362,11 @@ body{
 
 #footer{
     display: flex;
+    flex-direction: row;
+    background-color: #D2C4C4;
     flex-wrap: wrap;
     justify-content: space-between;
-    background: #D2C4C4;
+    /* background: #D2C4C4; */
 }
 
 footer .col {
@@ -450,6 +453,7 @@ footer .copyright{
     font-size: 16px;
     font-weight: 600;
 }
+
 
 /* products */
 
@@ -541,7 +545,7 @@ footer .copyright{
 
 .section-p1{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .section-p1 .details{
@@ -755,20 +759,40 @@ footer .copyright{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-body{
-    padding: 50px;
-}
 
 .form-group{
     margin-bottom:30px ;
 }
 
-/* .form-btn {
-    background-color: green;
-    color: white;
-} */
+/* admin - home page  */
 
-
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+  }
 
 
 
@@ -1030,5 +1054,10 @@ body{
         padding: 8px; 
     }
 
+    /* admin-sidebar */
+    @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 18px;}
 
+    }
 }

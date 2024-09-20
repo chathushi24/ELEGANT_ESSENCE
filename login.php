@@ -20,7 +20,21 @@ if (isset($_POST["login"])){
     }else{
          echo "<div class='alert alert-danger'>Username does not match </div>";
     }
-}
+
+    $sql = "INSERT INTO login  (username,password) VALUES (?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    $preparestmt = mysqli_stmt_prepare($stmt,$sql);
+    if ($preparestmt){
+        mysqli_stmt_bind_param($stmt, "sss", $username, $passwordHash);
+        mysqli_stmt_execute($stmt);
+        echo "<div class='alert alert-success'>login successfully.</div>";
+        // echo "You are registered successfully";
+    }else{
+        die ("something went wrong");
+    }
+    }
+
+
 
 ?>
 
@@ -38,6 +52,7 @@ if (isset($_POST["login"])){
 <body>
     <div class="container">
         <form action="login.php" method="post">
+            <h1>Login Form</h1>
             <div class="form-group">
                 <input type="text" placeholder="Enter your username" name="username" class="form-control">
             </div>
