@@ -24,6 +24,8 @@
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a class="active" href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
+                <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
         <div id="mobile">

@@ -1,4 +1,6 @@
 <?php
+
+require "connection.php";
         if (isset($_POST["submit"])){
             $Fullname = $_POST["Fullname"];
             $email = $_POST["Email"];
@@ -15,9 +17,9 @@
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 array_push($errors,"Email is not valid");
             }
-            if (strlen($password)<8){
-                array_push($errors,"password must be atleast 8 characters long");
-            }
+            // if (strlen($password)<8){
+            //     array_push($errors,"password must be atleast 8 characters long");
+            // }
             if ($password!==$passwordRepeat){
                 array_push($errors,"Password does not match");
             }
@@ -37,19 +39,18 @@
             }else{
                 //we will insert the data into the database
            
-                $sql = "INSERT INTO users (fullname,email,password) VALUES (?,?,?)";
-                $stmt = mysqli_stmt_init($conn);
-                $preparestmt = mysqli_stmt_prepare($stmt,$sql);
-                if ($preparestmt){
-                    mysqli_stmt_bind_param($stmt, "sss", $Fullname,$email, $passwordHash);
-                    mysqli_stmt_execute($stmt);
-                    echo "<div class='alert alert-success'>You are registered successfully.</div>";
-                    // echo "You are registered successfully";
-                }else{
-                    die ("something went wrong");
+                Database::iud("INSERT INTO `user` (fullname,email,password) VALUES ('$Fullname','$email','$password')");
+                // $stmt = mysqli_stmt_init($conn);
+                // $preparestmt = mysqli_stmt_prepare($stmt,$sql);
+                // if ($preparestmt){
+                //     mysqli_stmt_bind_param($stmt, "sss", $Fullname,$email, $passwordHash);
+                //     mysqli_stmt_execute($stmt);
+                //     echo "<div class='alert alert-success'>You are registered successfully.</div>";
+                //     // echo "You are registered successfully";
+                // }else{
+                //     die ("something went wrong");
+                // }
                 }
-                }
-
                 
         }
         ?> 

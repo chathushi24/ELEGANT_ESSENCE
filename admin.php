@@ -13,8 +13,8 @@
 
 <body>
     
-    <div class="add-pro">
-    <form action="admin.php" method="POST">
+  
+    <form id="add-pro" action="admin.php" method="POST">
         <div>
             <label for="">Item Name</label>
             <input type="text" name="item-name">

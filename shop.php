@@ -22,6 +22,8 @@
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
+                <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
             </ul>
         </div>
         <div id="mobile">
@@ -37,7 +39,7 @@
 
     <section id="product1" class="section-p1">
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='pro1.php';">
+            <div class="pro" onclick="window.location.href='product.php';">
                 <img src="images/fp1.jpg" alt="fp1">
                 <div class="des">
                 <h5>Brown California top</h5>
