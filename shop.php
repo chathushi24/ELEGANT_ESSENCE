@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegant Essence</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
 
 
 <body>
-    
+
     <section id="header">
         <a href="#"><img src="./images/L.png" class="logo" alt="logo"></a>
 
@@ -22,8 +23,7 @@
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
-                <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
+                <li><button class="normal">LOGOUT</button></li>
             </ul>
         </div>
         <div id="mobile">
@@ -39,26 +39,41 @@
 
     <section id="product1" class="section-p1">
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='product.php';">
-                <img src="images/fp1.jpg" alt="fp1">
-                <div class="des">
-                <h5>Brown California top</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 2990</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
+            <?php
+            require "connection.php";
+            $products = Database::search("SELECT * FROM `product` ");
+            $num_rows = $products->num_rows;
 
-            <div class="pro">
+
+            for ($i = 0; $i < $num_rows; $i++) {
+                $product_data = $products->fetch_assoc();
+
+            ?>
+                <div class="pro">
+                    <img src="<?php echo $product_data['img_url']; ?>" alt="fp1">
+                    <div class="des">
+                        <h5><?php echo $product_data['title']; ?></h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4><?php echo $product_data['price']; ?></h4>
+                    </div>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ViewProduct(<?php echo $product_data['product_id'] ?>)">View Product</button>
+                </div>
+            <?php
+
+            }
+
+            ?>
+
+            <!-- <div class="pro">
                 <img src="images/fp2.jpg" alt="fp2">
                 <div class="des">
-                <h5>luxe stella dress</h5>
+                    <h5>luxe stella dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -74,7 +89,7 @@
             <div class="pro">
                 <img src="images/fp3.jpg" alt="fp3">
                 <div class="des">
-                <h5>white soft cami top</h5>
+                    <h5>white soft cami top</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -90,7 +105,7 @@
             <div class="pro">
                 <img src="images/fp4.jpg" alt="fp4">
                 <div class="des">
-                <h5>flower printed maxi dress</h5>
+                    <h5>flower printed maxi dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -106,7 +121,7 @@
             <div class="pro">
                 <img src="images/fp5.jpg" alt="fp5">
                 <div class="des">
-                <h5>steam cami top</h5>
+                    <h5>steam cami top</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -122,7 +137,7 @@
             <div class="pro">
                 <img src="images/fp6.jpg" alt="fp6">
                 <div class="des">
-                <h5>african toselled dress</h5>
+                    <h5>african toselled dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -138,7 +153,7 @@
             <div class="pro">
                 <img src="images/fp7.jpg" alt="fp7">
                 <div class="des">
-                <h5>regular white crop top</h5>
+                    <h5>regular white crop top</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -154,7 +169,7 @@
             <div class="pro">
                 <img src="images/fp8.jpg" alt="fp8">
                 <div class="des">
-                <h5>black highneck bodycon dress </h5>
+                    <h5>black highneck bodycon dress </h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -166,11 +181,11 @@
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
             </div>
-   
+
             <div class="pro">
                 <img src="images/na1.jpg" alt="na1">
                 <div class="des">
-                <h5>White wide legs pants</h5>
+                    <h5>White wide legs pants</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -186,12 +201,12 @@
             <div class="pro">
                 <img src="images/na2.jpg" alt="na2">
                 <div class="des">
-                <h5>Ripped wide legs jeans </h5>
+                    <h5>Ripped wide legs jeans </h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                         <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
                     <h4> LKR 6990 </h4>
@@ -202,7 +217,7 @@
             <div class="pro">
                 <img src="images/na3.jpg" alt="na3">
                 <div class="des">
-                <h5>Grey Denim</h5>
+                    <h5>Grey Denim</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -218,7 +233,7 @@
             <div class="pro">
                 <img src="images/na4.jpg" alt="na4">
                 <div class="des">
-                <h5>Denim grey short</h5>
+                    <h5>Denim grey short</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -234,7 +249,7 @@
             <div class="pro">
                 <img src="images/na5.jpg" alt="na5">
                 <div class="des">
-                <h5>Black mesh dress</h5>
+                    <h5>Black mesh dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -250,7 +265,7 @@
             <div class="pro">
                 <img src="images/na6.jpg" alt="na6">
                 <div class="des">
-                <h5>Streamy white dress</h5>
+                    <h5>Streamy white dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -266,7 +281,7 @@
             <div class="pro">
                 <img src="images/na7.jpg" alt="na7">
                 <div class="des">
-                <h5>Pinkish classy dress</h5>
+                    <h5>Pinkish classy dress</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -282,7 +297,7 @@
             <div class="pro">
                 <img src="images/na8.jpg" alt="na8">
                 <div class="des">
-                <h5>Neck tie purple dress </h5>
+                    <h5>Neck tie purple dress </h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -293,15 +308,10 @@
                     <h4> LKR 8990 </h4>
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
+            </div> -->
         </div>
     </section>
 
-    <section id="pagination" >
-        <a href="shop.php">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
-    </section>
 
     <section id="newsletter" class="section-p1 section-m1">
         <div class="newstext">

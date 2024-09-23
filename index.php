@@ -1,5 +1,6 @@
 <?php
 require "connection.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +26,9 @@ require "connection.php";
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
-                <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a>
+                <!-- <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a> -->
+                <li><button class="normal" onclick = "logout()">LOGOUT</button></li>
             </ul>
         </div>
         <div id="mobile">
@@ -36,11 +38,12 @@ require "connection.php";
     </section>
 
     <section id="hero" class="flex items-center justify-between shadow-[0_5px_15px_rgba(0,0,0,0.06)] z-[999] sticky px-20 py-5 left-0 top-0">
-        <h4>Welcome to the store</h4>
+        <h4>Hello <?php echo $user = $_SESSION["u"]["fullname"];
+        ?>,Welcome to the store</h4>
         <h2>Embrace yourself with </h2>
         <h1>ELEGANT ESSENCE</h1>
         <p>Trade-in-offer</p>
-        <button onkeypress="Hi();">Shop Now </button>
+        <button a href="shop.php">Shop Now </button>
     </section>
 
     <section id="product1" class="section-p1">
@@ -81,13 +84,12 @@ require "connection.php";
             $num_rows = $products->num_rows;
         
 
-            for ($i = 0; $i < $num_rows; $i++) {
+            for ($i = 0; $i < 8; $i++) {
                 $product_data = $products->fetch_assoc();
 
             ?>
                 <div class="pro" >
                     <img src="<?php echo $product_data['img_url']; ?>" alt="fp1" >
-                    <?php echo $product_data['product_id'] ?>
                     <div class="des">
                         <h5><?php echo $product_data['title']; ?></h5>
                         <div class="star">
@@ -99,7 +101,7 @@ require "connection.php";
                         </div>
                         <h4><?php echo $product_data['price']; ?></h4>
                     </div>
-                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick=''>View Product</button>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ViewProduct(<?php echo $product_data['product_id'] ?>)">View Product</button>
                 </div>
             <?php
 
@@ -230,23 +232,33 @@ require "connection.php";
         <h2>New Arrivals</h2>
         <p> Collection 2024 With New Designs - July Drop</p>
         <div class="pro-container">
-            <div class="pro">
-                <img src="images/na1.jpg" alt="na1">
-                <div class="des">
-                    <h5>White wide legs pants</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 6990</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
+            <?php
+        for ($i = 8; $i < $num_rows; $i++) {
+                $product_data = $products->fetch_assoc();
 
-            <div class="pro">
+            ?>
+                <div class="pro" >
+                    <img src="<?php echo $product_data['img_url']; ?>" alt="fp1" >
+                    <div class="des">
+                        <h5><?php echo $product_data['title']; ?></h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4><?php echo $product_data['price']; ?></h4>
+                    </div>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ViewProduct(<?php echo $product_data['product_id'] ?>)">View Product</button>
+                </div>
+            <?php
+
+            }
+
+            ?>
+
+            <!-- <div class="pro">
                 <img src="images/na2.jpg" alt="na2">
                 <div class="des">
                     <h5>Ripped wide legs jeans </h5>
@@ -356,7 +368,7 @@ require "connection.php";
                     <h4> LKR 8990 </h4>
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
+            </div> -->
         </div>
     </section>
 

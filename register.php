@@ -50,6 +50,11 @@ require "connection.php";
                 // }else{
                 //     die ("something went wrong");
                 // }
+                ?>
+                <script>
+                    window.location = "login.php";
+                </script>
+                <?php
                 }
                 
         }

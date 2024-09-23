@@ -1,14 +1,19 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elegant Essence</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 </head>
+
 <body>
-    
+
     <section id="header">
         <a href="#"><img src="./images/L.png" class="logo" alt="logo"></a>
 
@@ -20,6 +25,7 @@
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
+                <li><button class="normal">LOGOUT</button></li>
             </ul>
         </div>
         <div id="mobile">
@@ -27,46 +33,53 @@
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
+    <?php
 
-    <section id="details" class="section-p1">
-        <div class="product-image">
-            <img src="images/fp1.jpg" width="100%">
-        </div>
 
-        <div class="product_details">
-            <h6>Home</h6>
-            <h4>Brown California Top</h4>
-            <h2>$139.00</h2>
-            <select>
-                <option>Select Size</option>
-                <option>XXL</option>
-                <option>XL</option>
-                <option>Large</option>
-                <option>Medium</option>
-                <option>Small</option>
-            </select>
-            <input type="number" value="1"><br><br>
-            <button class="normal">Add To Cart</button>
-            <h4>Product Details</h4>
-            <Span> Introducing our chic and stylish Brown California Top, perfect for those who love a casual yet
-                 trendy look. This top features a rich brown hue, adorned with a classic "California" print and a minimalist palm 
-                 tree graphic. Made from high-quality, breathable fabric, it ensures comfort and durability for everyday wear. 
-                 The cropped design pairs effortlessly with high-waisted jeans, shorts, or skirts, making it a versatile addition to your wardrobe. 
-                 Ideal for beach outings, casual gatherings, or simply lounging in style, this top is a must-have for any fashion-forward individual.</Span>
-        </div>
-    </section>
+    if (isset($_SESSION["product_id"])) {
+        require "connection.php";
 
-    <section id="newsletter" class="section-p1 section-m1">
-        <div class="newstext">
-            <h4>Sign Up For Newsletters</h4>
-            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
-        </div>
-        <div class="form">
-            <input type="text" placeholder="Your Email">
-            <button class="normal">Sign Up</button>
-        </div>
-    </section>
+        $product_rs = Database::search("SELECT * FROM product WHERE `product_id`='" . $_SESSION['product_id'] . "'");
+        $product_data = $product_rs->fetch_assoc();
+        ?>
 
+        <section id="details" class="section-p1">
+            <div class="product-image">
+                <img src="<?php echo $product_data['img_url']; ?>" width="100%">
+            </div>
+
+            <div class="product_details">
+                <h6>Home</h6>
+                <h4><?php echo $product_data['title'] ?></h4>
+                <h2><?php echo $product_data['price']; ?></h2>
+                <select id="size">
+                    <option value="">Select Size</option>
+                    <option value="xxl">XXL</option>
+                    <option value="xl">XL</option>
+                    <option value="large">Large</option>
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                </select>
+                <input type="number" value="1" id="qty"><br><br>
+                <button class="normal" onclick="addToCart(<?php echo $product_data['product_id']; ?>);">Add To Cart</button>
+                <h4>Product Details</h4>
+                <Span> <?php echo $product_data['description']; ?></Span>
+            </div>
+        </section>
+
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up For Newsletters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Your Email">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+        <?php
+    }
+    ?>
     <footer class="section-p1">
         <div class="col">
             <img class="logo" src="/images/logo1.jpeg" alt="logo">
@@ -107,7 +120,6 @@
 
         <div class="copyright"></div>
         <p>2021, Tech2 ytd - HTML CSS Ecommerce website </p>
-    </footer> 
-
+    </footer>
     <script src="script.js"></script>
 </body>

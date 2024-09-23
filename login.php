@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if (isset($_POST["login"])) {
     $username = $_POST['username'];
@@ -24,6 +24,8 @@ if (isset($_POST["login"])) {
     // }
 
     if ($result['fullname'] == $username && $result['password'] == $password) {
+        $_SESSION["u"] = $result;
+        Database::iud(query: "INSERT INTO `cart` (`user_id`) VALUES ('" .  $result["user_id"] . "')");
         // header("Location : index.php");
         // exit();
 
@@ -34,6 +36,7 @@ if (isset($_POST["login"])) {
             </script>
         <?php
         } else {
+
         ?>
             <script>
                 window.location = "index.php";
