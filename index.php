@@ -15,6 +15,7 @@ session_start();
 
 <body>
 
+    <!-- navbar -->
     <section id="header">
         <a href="#"><img src="images/L.png" class="logo" alt="logo"></a>
 
@@ -26,8 +27,6 @@ session_start();
                 <li><a href="contact.php">Contact</a></li>
                 <li id="lg-bag"><a href="cart.php"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="far fa-times"></i></a>
-                <!-- <li id="lg-user"><a href="login.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <a href="#" id="close"><i class="far fa-times"></i></a> -->
                 <li><button class="normal" onclick = "logout()">LOGOUT</button></li>
             </ul>
         </div>
@@ -43,7 +42,7 @@ session_start();
         <h2>Embrace yourself with </h2>
         <h1>ELEGANT ESSENCE</h1>
         <p>Trade-in-offer</p>
-        <button a href="shop.php">Shop Now </button>
+
     </section>
 
     <section id="product1" class="section-p1">
@@ -51,33 +50,7 @@ session_start();
         <p>Summer Collection 2024 With New Designs</p>
         <div class="pro-container">
 
-            <!-- <section id="feature" class="section-p1">
-        <div class="fe-box">
-            <img src="/images/f1.png" alt="f1">
-            <h6>Free Shipping</h6>
-        </div>
-
-        <div class="fe-box">
-            <img src="/images/f2.png" alt="f2">
-            <h6>Online Order</h6>
-        </div>
-
-        <div class="fe-box">
-            <img src="/images/f3.png" alt="f3">
-            <h6>Save Money</h6>
-        </div>
-
-        <div class="fe-box">
-            <img src="/images/f4.png" alt="f4">
-            <h6>Promotions</h6>
-        </div>
-
-        <div class="fe-box">
-            <img src="/images/f5.png" alt="f5">
-            <h6>24/7 Support</h6>
-        </div>
-    </section> -->
-
+        <!-- calling the products inserted in the database -->
             <?php
 
             $products = Database::search("SELECT * FROM `product` ");
@@ -108,117 +81,6 @@ session_start();
             }
 
             ?>
-            <!-- <div class="pro">
-                <img src="images/fp2.jpg" alt="fp2">
-                <div class="des">
-                    <h5>luxe stella dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 5990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp3.jpg" alt="fp3">
-                <div class="des">
-                    <h5>white soft cami top</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 2990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp4.jpg" alt="fp4">
-                <div class="des">
-                    <h5>flower printed maxi dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 5990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp5.jpg" alt="fp5">
-                <div class="des">
-                    <h5>steam cami top</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 1990</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp6.jpg" alt="fp6">
-                <div class="des">
-                    <h5>african toselled dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 6990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp7.jpg" alt="fp7">
-                <div class="des">
-                    <h5>regular white crop top</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 1990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/fp8.jpg" alt="fp8">
-                <div class="des">
-                    <h5>black highneck bodycon dress </h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 5990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div> -->
         </div>
     </section>
 
@@ -232,6 +94,8 @@ session_start();
         <h2>New Arrivals</h2>
         <p> Collection 2024 With New Designs - July Drop</p>
         <div class="pro-container">
+
+        <!-- calling the products inserted in the database -->
             <?php
         for ($i = 8; $i < $num_rows; $i++) {
                 $product_data = $products->fetch_assoc();
@@ -257,118 +121,6 @@ session_start();
             }
 
             ?>
-
-            <!-- <div class="pro">
-                <img src="images/na2.jpg" alt="na2">
-                <div class="des">
-                    <h5>Ripped wide legs jeans </h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 6990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na3.jpg" alt="na3">
-                <div class="des">
-                    <h5>Grey Denim</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 7990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na4.jpg" alt="na4">
-                <div class="des">
-                    <h5>Denim grey short</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 4990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na5.jpg" alt="na5">
-                <div class="des">
-                    <h5>Black mesh dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 6990</h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na6.jpg" alt="na6">
-                <div class="des">
-                    <h5>Streamy white dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 6990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na7.jpg" alt="na7">
-                <div class="des">
-                    <h5>Pinkish classy dress</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 8990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="images/na8.jpg" alt="na8">
-                <div class="des">
-                    <h5>Neck tie purple dress </h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4> LKR 8990 </h4>
-                </div>
-                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-            </div> -->
         </div>
     </section>
 

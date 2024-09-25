@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-    <!-- <link rel="stylesheet" href="main.css"> -->
 </head>
 
 
 <body>
     
+    <!-- navbar -->
     <section id="header">
         <a href="#"><img src="./images/L.png" class="logo" alt="logo"></a>
 

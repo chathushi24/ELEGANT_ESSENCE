@@ -1,5 +1,6 @@
 <?php
 
+// to remove products from the cart
 require "connection.php";
 
 $product_id = $_GET["id"];

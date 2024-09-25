@@ -116,3 +116,119 @@ function confirmedshipping(total){
     r.send();
 }
 
+function deleteUser(id) {
+    var r = new XMLHttpRequest();
+    const confirmation = confirm("Are you sure you want to delete this user?");
+    if (confirmation) {
+        r.onreadystatechange = function () {
+            if (r.readyState == 4) {
+                var t = r.responseText;
+                if (t == "Success") {
+                    window.location = "admin.php";
+                } else {
+                    alert(t);
+                }
+            }
+        }
+
+        r.open("GET", "removeUser.php?id=" + id, true);
+        r.send();
+    } else {
+        alert("User deletion cancelled");
+    }
+}
+
+const modal = document.getElementById('modal');
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+function openModal(){
+    const modal = document.getElementById('modal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    modal.classList.remove('hidden');
+}
+
+function closeModal(){
+    const modal = document.getElementById('modal');
+    modal.classList.add('hidden');
+}
+// Close modal when clicking outside of the modal container
+window.addEventListener('click', (e) => {
+    if (e.target == modal) {
+        modal.classList.add('hidden');
+    }
+});
+
+
+function submitProduct(){
+    var r = new XMLHttpRequest();
+    var title = document.getElementById("title").value;
+    var price = document.getElementById("price").value;
+    var qty = document.getElementById("qty").value;
+    var size = document.getElementById("size").value;
+    var description = document.getElementById("description").value;
+    var img_url = document.getElementById("url").value;
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) {
+            var t = r.responseText;
+            if (t == "Success") {
+                    // Show the success alert
+                    const successAlert = document.getElementById('successAlert');
+                    successAlert.classList.remove('hidden');
+    
+                    // Hide the alert after 3 seconds
+                    setTimeout(() => {
+                        successAlert.classList.add('hidden');
+                    }, 5000);
+                    const modal = document.getElementById('modal'); // Make sure modal has correct ID or reference
+                    modal.classList.add('hidden');
+            } else {
+                alert(t);
+            }
+        }
+
+    }
+    r.open("GET", "addProductProcess.php?title=" + title + "&price=" + price + "&qty=" + qty+ "&size=" + size+ "&description=" + description+ "&img_url=" + img_url, true);
+    r.send();
+}
+function deleteProduct(id){
+    var r = new XMLHttpRequest();
+    const confirmation = confirm("Are you sure you want to delete this product?");
+    if (confirmation) {
+        r.onreadystatechange = function () {
+            if (r.readyState == 4) {
+                var t = r.responseText;
+                if (t == "Success") {
+                    window.location = "admin.php";
+                } else {
+                    alert(t);
+                }
+            }
+
+        }
+
+        r.open("GET", "removeProduct.php?id=" + id, true);
+        r.send();
+    } else {
+        alert("User deletion cancelled");
+    }
+}
+
+function changeStatus(id){
+    var btn = document.getElementById("btn_ship_" + id);
+    if (btn.innerHTML === "Shipped") {
+        btn.innerHTML = "Delivered";
+        btn.style.backgroundColor = "red";
+    } else {
+        btn.innerHTML = "Shipped";
+        btn.style.backgroundColor = "green";
+    }
+    
+}
+
+
+
+
+
+

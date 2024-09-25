@@ -7,7 +7,7 @@ require "connection.php";
             $password = $_POST["Password"];
             $passwordRepeat = $_POST["Repeat_password"];
 
-            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
             $errors = array();
 
@@ -24,8 +24,8 @@ require "connection.php";
                 array_push($errors,"Password does not match");
             }
 
-            require_once "database.php";
-            $sql = "SELECT * FROM users WHERE email = '$email'";
+            
+            $sql = "SELECT * FROM user WHERE email = '$email'";
             $result = mysqli_query($conn, $sql);
             $rowcount = mysqli_num_rows($result);
             if ($rowcount>0){
@@ -37,19 +37,9 @@ require "connection.php";
                     echo "<div class= 'alert alert-danger'>$error</div>";
                 }
             }else{
-                //we will insert the data into the database
+                //insert the data into the database
            
                 Database::iud("INSERT INTO `user` (fullname,email,password) VALUES ('$Fullname','$email','$password')");
-                // $stmt = mysqli_stmt_init($conn);
-                // $preparestmt = mysqli_stmt_prepare($stmt,$sql);
-                // if ($preparestmt){
-                //     mysqli_stmt_bind_param($stmt, "sss", $Fullname,$email, $passwordHash);
-                //     mysqli_stmt_execute($stmt);
-                //     echo "<div class='alert alert-success'>You are registered successfully.</div>";
-                //     // echo "You are registered successfully";
-                // }else{
-                //     die ("something went wrong");
-                // }
                 ?>
                 <script>
                     window.location = "login.php";

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// checking whether it's a admin or a user
 if (isset($_POST["login"])) {
     $username = $_POST['username'];
     $password = $_POST["password"];
@@ -10,18 +11,6 @@ if (isset($_POST["login"])) {
     $sql = Database::search("SELECT * FROM user WHERE fullname = '$username' AND password='$password'");
     $result = $sql->fetch_assoc();
 
-    // $result = mysqli_query($conn, $sql);
-    // $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    // if ($user){
-    //     if (password_verify($password,$user["password"])){
-    //         header("Location: index.php");
-    //         die();
-    //     }else{
-    //         echo "<div class='alert alert-danger'>password does not match </div>";
-    //     }
-    // }else{
-    //      echo "<div class='alert alert-danger'>Username does not match </div>";
-    // }
 
     if ($result['fullname'] == $username && $result['password'] == $password) {
         $_SESSION["u"] = $result;
@@ -32,7 +21,7 @@ if (isset($_POST["login"])) {
         if ($username == "admin" && $password == "1234") {
 ?>
             <script>
-                window.location = "admin/home.php";
+                window.location = "admin.php";
             </script>
         <?php
         } else {
@@ -44,18 +33,6 @@ if (isset($_POST["login"])) {
 <?php
         }
     }
-
-    // $sql = "INSERT INTO login  (username,password) VALUES (?,?)";
-    // $stmt = mysqli_stmt_init($conn);
-    // $preparestmt = mysqli_stmt_prepare($stmt,$sql);
-    // if ($preparestmt){
-    //     mysqli_stmt_bind_param($stmt, "sss", $username, $passwordHash);
-    //     mysqli_stmt_execute($stmt);
-    //     echo "<div class='alert alert-success'>login successfully.</div>";
-    //     // echo "You are registered successfully";
-    // }else{
-    //     die ("something went wrong");
-    // }
 }
 
 
